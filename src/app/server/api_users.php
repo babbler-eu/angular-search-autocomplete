@@ -46,9 +46,9 @@ function search_user( $mysqli, $request ) {
         $n = 0;
             while ($row = $result->fetch_assoc()) {
                 $dati[$n]['id'] = $row['id'];
-                $dati[$n]['a'] = $row['username'];
-                $dati[$n]['b'] = $row['name'];
-                $dati[$n]['c'] = $row['email'];
+                $dati[$n]['username'] = $row['username'];
+                $dati[$n]['name'] = $row['name'];
+                $dati[$n]['email'] = $row['email'];
                 $n++;
             }
         } 

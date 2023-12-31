@@ -74,14 +74,14 @@ export class AppComponent implements OnInit {
         //console.log(this.users)
       } else {
         this.ifSearch = true;
-        this.users = [{ id: 0, a:"", b:"", c:"Sorry, nothing found, try searching again" }];
+        this.users = [{ id: 0, username:"", name:"", email:"Sorry, nothing found, try searching again" }];
       }
       
     });
   }
 
-  onSelectUser(user: { b: any; }) {
-    console.log(user.b);
+  onSelectUser(user: { name: any; }) {
+    console.log(user.name);
   }
 
 }

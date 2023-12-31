@@ -19,7 +19,7 @@
                         <ul class='abh' slimScroll [options]="opts" [scrollEvents]="scrollEvents">
                             @for (user of users; track user.id ) {
                                 <a (click)="onSelectUser(user)">
-                                  {{user.a}} {{user.b}} {{user.c}}
+                                  {{user.username}} {{user.name}} {{user.email}}
                                 </a>
                                 <hr class="abe">
                               }
