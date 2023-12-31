@@ -74,7 +74,7 @@ export class AppComponent implements OnInit {
         //console.log(this.users)
       } else {
         this.ifSearch = true;
-        this.users = [{ id: 0, username:"", name:"", email:"Sorry, nothing found, try searching again" }];
+        this.users = [{ id: 0, username:"", email:"", name:"Sorry, nothing found, try searching again" }];
       }
       
     });
