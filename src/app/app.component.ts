@@ -1,5 +1,5 @@
-import { Component, EventEmitter, OnInit  } from '@angular/core';
-import { CommonModule, NgIf, NgFor } from '@angular/common';
+import { Component, EventEmitter, OnInit, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './services/users.service';
@@ -13,9 +13,7 @@ import { SlimScrollOptions, SlimScrollEvent, NgSlimScrollModule } from 'ngx-slim
     RouterOutlet,
     FormsModule, 
     ReactiveFormsModule, 
-    NgIf, 
-    NgSlimScrollModule, 
-    NgFor],
+    NgSlimScrollModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -26,7 +24,7 @@ export class AppComponent implements OnInit {
   scrollEvents: any = new EventEmitter<SlimScrollEvent>;
 
   public searchForm: FormGroup;
-  public users: User[] = [];
+  public users = signal<User[]>([]);
   public requestUser: any;
   public ifSearch: boolean = false;
 
@@ -56,7 +54,7 @@ export class AppComponent implements OnInit {
   sendData(event: any) {
    
     if (event.target.value === "") {
-      this.users = [];
+      this.users.set([]);
       this.ifSearch = false;
       return;
     }
@@ -70,11 +68,11 @@ export class AppComponent implements OnInit {
       
       if (result.length > 0) {
         this.ifSearch = true;
-        this.users = result;
-        //console.log(this.users)
+        this.users.set(result);
+        console.log(this.users())
       } else {
         this.ifSearch = true;
-        this.users = [{ id: 0, username:"", email:"", name:"Sorry, nothing found, try searching again" }];
+        this.users.set([{ id: 0, username:"", email:"", name:"Sorry, nothing found, try searching again" }]);
       }
       
     });

@@ -17,7 +17,7 @@
                 @if (ifSearch) {
                     <li class='abb abc abd abf' >
                         <ul class='abh' slimScroll [options]="opts" [scrollEvents]="scrollEvents">
-                            @for (user of users; track user.id ) {
+                            @for (user of users(); track user.id ) {
                                 <a (click)="onSelectUser(user)">
                                   {{user.username}} {{user.name}} {{user.email}}
                                 </a>
